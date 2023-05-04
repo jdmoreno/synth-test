@@ -1,0 +1,153 @@
+{
+  "type": "array",
+  "length": {
+    "type": "number",
+    "range": {
+      "low": 0,
+      "high": 2,
+      "step": 1
+    },
+    "subtype": "u64"
+  },
+  "content": {
+    "type": "object",
+    "author": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{0, 255}"
+    },
+    "comments": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 255}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "contexts": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 255}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "dateexecuted": {
+      "type": "date_time",
+      "format": "%Y-%m-%dT%H:%M:%S",
+      "subtype": "naive_date_time"
+    },
+    "deployment_id": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 10}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "description": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 255}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "exectype": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{0, 10}"
+    },
+    "filename": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{0, 255}"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9]{0, 255}"
+    },
+    "labels": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 255}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "liquibase": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 20}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "md5sum": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 35}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+    "orderexecuted": {
+      "type": "number",
+      "range": {},
+      "subtype": "i32"
+    },
+    "tag": {
+      "type": "one_of",
+      "variants": [
+        {
+          "weight": 1.0,
+          "type": "string",
+          "pattern": "[a-zA-Z0-9]{0, 255}"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

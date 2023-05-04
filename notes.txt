@@ -1,0 +1,4 @@
+synth import --from postgres://postgres:password@localhost:55432/tdf --schema eps tdf_synth
+
+synth generate tdf_synth --collection event_details
+
