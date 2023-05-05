@@ -4,20 +4,61 @@
     "type": "number",
     "range": {
       "low": 0,
-      "high": 2,
+      "high": 4,
       "step": 1
     },
     "subtype": "u64"
   },
+
   "content": {
     "type": "object",
+
+    "id": {
+      "type": "unique",
+      "content": {
+		  "type": "string",
+		  "uuid": {}
+	  }
+    },
+	
+    "mailpiece_id": {
+      "type": "one_of",
+      "variants": [
+        {
+		  "type": "string",
+		  "uuid": {}
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+	
+    "expiry_date": {
+      "type": "one_of",
+      "variants": [
+        {
+			"type": "date_time",
+			"format": "%Y-%m-%d",
+			"subtype": "naive_date",
+			"begin": "2023-01-01",
+			"end": "2023-12-31"
+        },
+        {
+          "weight": 1.0,
+          "type": "null"
+        }
+      ]
+    },
+	
     "account_number": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -25,13 +66,14 @@
         }
       ]
     },
+	
     "channel_id": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -39,13 +81,14 @@
         }
       ]
     },
+
     "customer_reference_id": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -53,13 +96,14 @@
         }
       ]
     },
+
     "delivery_office": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -67,13 +111,14 @@
         }
       ]
     },
+
     "delivery_status": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -81,13 +126,14 @@
         }
       ]
     },
+
     "despatch_site": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -95,13 +141,14 @@
         }
       ]
     },
+
     "destination": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -109,13 +156,14 @@
         }
       ]
     },
+
     "event_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -123,13 +171,14 @@
         }
       ]
     },
+
     "event_location": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -137,13 +186,14 @@
         }
       ]
     },
+
     "event_location_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -151,13 +201,14 @@
         }
       ]
     },
+
     "event_trigger_date": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -165,13 +216,14 @@
         }
       ]
     },
+
     "event_trigger_time": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -179,39 +231,14 @@
         }
       ]
     },
-    "expiry_date": {
-      "type": "one_of",
-      "variants": [
-        {
-          "weight": 1.0,
-          "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 50}"
-        },
-        {
-          "weight": 1.0,
-          "type": "null"
-        }
-      ]
-    },
-    "id": {
-      "type": "unique",
-      "algorithm": {
-        "Hash": {
-          "retries": null
-        }
-      },
-      "content": {
-        "type": "string",
-        "pattern": "[a-zA-Z0-9]{0, 255}"
-      }
-    },
+
     "iftsta_event_reason": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -219,13 +246,14 @@
         }
       ]
     },
+
     "iftsta_event_status": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -233,13 +261,14 @@
         }
       ]
     },
+
     "location_name": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -247,27 +276,14 @@
         }
       ]
     },
-    "mailpiece_id": {
-      "type": "one_of",
-      "variants": [
-        {
-          "weight": 1.0,
-          "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 100}"
-        },
-        {
-          "weight": 1.0,
-          "type": "null"
-        }
-      ]
-    },
+
     "mailpiece_received_date": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -275,13 +291,14 @@
         }
       ]
     },
+
     "obdid": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -289,13 +306,14 @@
         }
       ]
     },
+
     "oned_barcode": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -303,13 +321,14 @@
         }
       ]
     },
+
     "other": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -317,13 +336,14 @@
         }
       ]
     },
+
     "p_senders_ref1": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -331,13 +351,14 @@
         }
       ]
     },
+
     "preadvice_receive_date": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -345,13 +366,14 @@
         }
       ]
     },
+
     "priority": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 50}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -359,13 +381,14 @@
         }
       ]
     },
+
     "recipient_country_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -373,13 +396,14 @@
         }
       ]
     },
+
     "recipient_post_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -387,13 +411,14 @@
         }
       ]
     },
+
     "sales_order_number": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -401,13 +426,14 @@
         }
       ]
     },
+
     "sender_post_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -415,13 +441,14 @@
         }
       ]
     },
+
     "senders_name": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -429,13 +456,14 @@
         }
       ]
     },
+
     "service_id": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -443,13 +471,14 @@
         }
       ]
     },
+
     "tdf_event_code": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 50}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -457,13 +486,14 @@
         }
       ]
     },
+
     "tracking_product_group": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 255}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -471,13 +501,14 @@
         }
       ]
     },
+
     "tsr_event_message": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 1000}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
@@ -485,13 +516,14 @@
         }
       ]
     },
+
     "tsr_event_status": {
       "type": "one_of",
       "variants": [
         {
           "weight": 1.0,
           "type": "string",
-          "pattern": "[a-zA-Z0-9]{0, 100}"
+          "pattern": "[a-zA-Z0-9]{0, 32}"
         },
         {
           "weight": 1.0,
